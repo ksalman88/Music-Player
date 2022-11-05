@@ -17,6 +17,7 @@ app.use('/user',userRouter);
 app.use('/music',musicRouter);
 app.use('/util',utilRouter);
 
+app.use(express.static('./static/uploads'))
 const port=5000;
 
 //these below lines are routes,a route can accept request and forward generate its reponse

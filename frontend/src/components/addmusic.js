@@ -11,11 +11,11 @@ const Addmusic = () => {
   const [selFile, setSelFile] = useState("");
 
   const userSubmit = async (formdata) => {
-    formdata.thumbnail = selThumbnail;
-    formdata.file = selFile;
+    formdata.image = selThumbnail;
+    formdata.musicfile = selFile;
 
     console.log(formdata);
-    
+
     const response = await fetch('http://localhost:5000/music/add', {
       method: 'POST',
       body: JSON.stringify(formdata),
@@ -72,7 +72,7 @@ const Addmusic = () => {
 
   return (
     <div className="container">
-      <h1>Signup Here</h1>
+      <h1>Add New Music Here</h1>
       <hr />
 
       <Formik
@@ -85,7 +85,7 @@ const Addmusic = () => {
           musicfile: "",
           createdate: "",
           year: "",
-          publisher:"",
+          publisher: "",
         }}
         onSubmit={userSubmit}>
         {({ values, handleChange, handleSubmit, errors }) => (
@@ -103,7 +103,7 @@ const Addmusic = () => {
             <TextField
               value={values.description}
               onChange={handleChange}
-              id="description" sx={{ mt: 5 }}
+              id="description" sx={{ mt: 3 }}
               fullWidth
               label="description" />
             <TextField
@@ -113,38 +113,53 @@ const Addmusic = () => {
               sx={{ mt: 3 }}
               fullWidth
               label="author" />
-            <TextField
+            <label className="mt-3">Song Lyrics</label>
+            <textarea
               value={values.lyrics}
               onChange={handleChange}
               id="lyrics"
-              sx={{ mt: 3 }}
-              fullWidth
-              label="lyrics" />
+              className="form-control"
+            >
 
-            <label>Upload Image</label>
-            <input type="file" className="mb-4 form-control" onChange={uploadThumbnail} />
-            <label>Upload Music</label>
-            <input type="file" className="mb-4 form-control" onChange={uploadFile} />
-            
-            <TextField
-              value={values.year}
-              onChange={handleChange}
-              id="year"
-              sx={{ mt: 3 }}
-              fullWidth
-              label="year"
-              type="year"
-            />
-             <TextField
-              value={values.publisher}
-              onChange={handleChange}
-              id="publisher"
-              sx={{ mt: 3 }}
-              fullWidth
-              label="publisher"
-              type="text"
-            />
-            
+            </textarea>
+            <div className="row mt-4">
+              <div className="col-md">
+                <label>Upload Image</label>
+                <input type="file" className="mb-4 form-control" onChange={uploadThumbnail} />
+
+              </div>
+              <div className="col-md">
+
+                <label>Upload Music</label>
+                <input type="file" className="mb-4 form-control" onChange={uploadFile} />
+              </div>
+            </div>
+
+            <div className="row mt-4">
+              <div className="col-md">
+
+                <TextField
+                  value={values.year}
+                  onChange={handleChange}
+                  id="year"
+                  fullWidth
+                  label="year"
+                  type="year"
+                />
+              </div>
+              <div className="col-md">
+
+                <TextField
+                  value={values.publisher}
+                  onChange={handleChange}
+                  id="publisher"
+                  fullWidth
+                  label="publisher"
+                  type="text"
+                />
+              </div>
+            </div>
+
             <Button type="submit" sx={{ mt: 5 }}>Submit</Button>
           </form>
         )}

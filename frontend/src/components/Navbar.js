@@ -23,12 +23,7 @@ const Navbar = (darkTheme, setDarkTheme) => {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                <img
-                    src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-                    height="15"
-                    alt="MDB Logo"
-                    loading="lazy"
-                />
+                <h4>Music App</h4>
             </a>
 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -41,6 +36,9 @@ const Navbar = (darkTheme, setDarkTheme) => {
                 </li>
                 <li class="nav-item">
                     <NavLink className="nav-link" to="/signup">Sign up</NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink className="nav-link" to="/BrowseMusic">Browse Music</NavLink>
                 </li>
                 
                
